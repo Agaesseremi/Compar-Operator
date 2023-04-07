@@ -17,26 +17,29 @@ require_once('./config/db.php');
         ?>
 
 
-        <div class="Cards mb-4 d-flex" style="width: 18rem;" id="listDestinations">
-            <div class="divObscur ">
-                <div class="listDestinations">
-                    <h2>Listes des Destinations:</h2>
+        <div class="Cards mb-4 row" id="listDestinations">
+            <div class="col-12 mb-4">
+                <div class="divObscur">
+                    <div class="listDestinations">
+                        <h2>Listes des Destinations:</h2>
+                    </div>
                 </div>
             </div>
-            <?php
-            foreach ($allDestinations as $destination) :
-            ?>
 
-                <div class="card m-5 col-4">
-                    <img src="<?= $destination->getImages() ?>" class="" alt="">
-                    <h1><?= $destination->getLocation() ?></h1>
-                    <p class="title">A partir de <?= $destination->getPrice() ?> Euros</p>
-                    <div class="button" type="submit"> <a href="TourOperator.php?location=<?= $destination->getLocation() ?>"> En savoir plus</a></div>
+            <?php foreach ($allDestinations as $destination) : ?>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card mb-4">
+                        <img src="<?= $destination->getImages() ?>" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $destination->getLocation() ?></h5>
+                            <p class="card-text">A partir de <?= $destination->getPrice() ?> Euros</p>
+                            <a href="TourOperator.php?location=<?= $destination->getLocation() ?>" class="btn btn-primary">En savoir plus</a>
+                        </div>
+                    </div>
                 </div>
-
             <?php endforeach; ?>
-
         </div>
+
 
     </section>
 
