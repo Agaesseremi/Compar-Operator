@@ -34,57 +34,59 @@ $manager = new AdminManager($db);
 
 
 
-
-        <div class="mt-5">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <?php $allTourOperator = $manager->getAllOperator();
-                foreach ($allTourOperator as $operator) : ?>
-                    <div class="col">
-                        <div class="card bg-transparent">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $operator->getName() ?></h5>
-                                <form method="post" action="./process/process_add_premium.php">
-                                    <input type="hidden" name="id_tour_operator" value="<?= $operator->getId() ?>">
-                                    <button type="submit" class="btn btn-primary">Add Premium</button>
-                                </form>
-
-                                <form method="post" action="./process/process_remove_premium.php">
-                                    <input type="hidden" name="id_tour_operator" value="<?= $operator->getId() ?>">
-                                    <button type="submit" class="btn btn-primary my-3">Remove Premium</button>
-                                </form>
-
-                                <div>
-                                    <h1>Ajout d'une destination</h1>
-                                    <form action="./process/process_add_destination.php" method="post" enctype="multipart/form-data">
-                                        <label for="destination">Entrez une nouvelle destination</label>
-                                        <input name="location" type="text">
-                                        <label for="destination">Entrez un prix</label>
-                                        <input name="price" type="text">
+        <div class="container">
+            <div class="mt-5">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <?php $allTourOperator = $manager->getAllOperator();
+                    foreach ($allTourOperator as $operator) : ?>
+                        <div class="col">
+                            <div class="card bg-transparent">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $operator->getName() ?></h5>
+                                    <form method="post" action="./process/process_add_premium.php">
                                         <input type="hidden" name="id_tour_operator" value="<?= $operator->getId() ?>">
-                                        <label for="file">Sélectionner le fichier à envoyer</label>
-                                        <input type="file" name="file" accept="images/*" placeholder="Photo" required>
-                                        <button type="submit" class="btn btn-primary">Send</button>
+                                        <button type="submit" class="btn btn-primary">Add Premium</button>
                                     </form>
+
+                                    <form method="post" action="./process/process_remove_premium.php">
+                                        <input type="hidden" name="id_tour_operator" value="<?= $operator->getId() ?>">
+                                        <button type="submit" class="btn btn-primary my-3">Remove Premium</button>
+                                    </form>
+
+                                    <div>
+                                        <h1>Ajout d'une destination</h1>
+                                        <form action="./process/process_add_destination.php" method="post" enctype="multipart/form-data">
+                                            <label for="destination">Entrez une nouvelle destination</label>
+                                            <input name="location" type="text">
+                                            <label for="destination">Entrez un prix</label>
+                                            <input name="price" type="text">
+                                            <input type="hidden" name="id_tour_operator" value="<?= $operator->getId() ?>">
+                                            <label for="file">Sélectionner le fichier à envoyer</label>
+                                            <input type="file" name="file" accept="images/*" placeholder="Photo" required>
+                                            <button type="submit" class="btn btn-primary">Send</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
 
+        <div class="container">
+            <div class="mb-5 mt-5">
+                <h1>Ajout un TO</h1>
+                <form action="./process/process_create_to.php" method="post">
+                    <label for="destination">Entrez un nom</label>
+                    <input name="name" type="text">
 
-        <div class="mb-5 mt-5">
-            <h1>Ajout un TO</h1>
-            <form action="./process/process_create_to.php" method="post">
-                <label for="destination">Entrez un nom</label>
-                <input name="name" type="text">
+                    <label for="link">ajoutez un lien</label>
+                    <input name="link" type="url">
 
-                <label for="link">ajoutez un lien</label>
-                <input name="link" type="url">
-
-                <button type="submit" class="btn btn-primary">Send</button>
-            </form>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
         </div>
 
     </section>

@@ -3,7 +3,7 @@ require_once '../class/destination.php';
 require_once '../class/adminManager.php';
 require_once '../config/db.php';
 
-var_dump($_POST);
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $location = $_POST['location'];
